@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Submit Your Profile - FUSN</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo"><h2>FUSN</h2></div>
+        <ul class="nav-menu">
+          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="submit.html" class="nav-link active">Submit Profile</a></li>
+          <li class="nav-item"><a href="explore.html" class="nav-link">Explore Universities</a></li>
+        </ul>
+        <div class="hamburger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="form-section">
+      <div class="container">
+        <div class="form-header">
+          <h1>Submit Your University Offer</h1>
+          <p>Help fellow Nepali students by sharing your verified university admission data. Your submission will be reviewed by our admin team before being added to the database.</p>
+        </div>
+
+        <form action="https://formsubmit.co/fusn.usa@gmail.com" method="POST" enctype="multipart/form-data">
+
+
+          <div class="form-grid">
+            <div class="form-group full-width">
+              <label for="userEmail">Your Email <span class="required">*</span></label>
+              <input type="email" name="userEmail" id="userEmail" placeholder="you@example.com" required />
+            </div>
+
+            <div class="form-group">
+              <label for="class10gpa">Class 10 GPA</label>
+              <input type="number" name="class10gpa" step="0.01" min="0" max="4" placeholder="e.g., 3.8" />
+            </div>
+
+            <div class="form-group">
+              <label for="class11gpa">Class 11 GPA</label>
+              <input type="number" name="class11gpa" step="0.01" min="0" max="4" placeholder="e.g., 3.7" />
+            </div>
+
+            <div class="form-group">
+              <label for="class12gpa">Class 12 GPA <span class="required">*</span></label>
+              <input type="number" name="class12gpa" step="0.01" min="0" max="4" placeholder="e.g., 3.9" required />
+            </div>
+
+            <div class="form-group">
+              <label for="satScore">SAT Score</label>
+              <input type="number" name="satScore" min="400" max="1600" placeholder="e.g., 1450" />
+            </div>
+
+            <div class="form-group">
+              <label for="englishTestType">English Test Type</label>
+              <select name="englishTestType">
+                <option value="">Select Test Type</option>
+                <option value="IELTS">IELTS</option>
+                <option value="TOEFL">TOEFL</option>
+                <option value="Duolingo">Duolingo English Test</option>
+                <option value="PTE">PTE Academic</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="englishScore">English Test Score</label>
+              <input type="number" name="englishScore" step="0.1" placeholder="Your score" />
+            </div>
+          </div>
+
+          <div class="form-group full-width">
+            <label for="universityName">University Name <span class="required">*</span></label>
+            <input type="text" name="universityName" required />
+          </div>
+
+          <div class="form-group full-width">
+            <label for="universityCOA">University COA (USD)</label>
+            <input type="number" name="universityCOA" min="0" placeholder="e.g., 45000" />
+          </div>
+
+          <div class="form-group full-width">
+            <label for="i20Upload">Upload I-20 Document <span class="required">*</span></label>
+            <input type="file" name="i20Upload" accept="image/*,.pdf" required />
+          </div>
+
+          <div class="form-group full-width">
+            <input type="checkbox" name="consent" id="consent" required />
+            <label for="consent">I confirm all personal info is redacted and I agree to share my data. <span class="required">*</span></label>
+          </div>
+
+          <!-- Hidden for Formsubmit -->
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_subject" value="New University Submission">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_next" value="thankyou.html">
+
+          <button type="submit" class="btn btn-primary submit-btn">Submit Profile</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2024 FUSN - Foreign University Student Network. Helping Nepali students achieve their dreams.</p>
+    </div>
+  </footer>
+</body>
+</html>
