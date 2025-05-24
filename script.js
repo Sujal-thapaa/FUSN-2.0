@@ -93,7 +93,7 @@ var emailjs = {
             setTimeout(function() {
                 // Simulate success
                 resolve({ status: 200, text: 'OK' });
-                
+
                 // Simulate failure
                 // reject({ error: 'Simulated error' });
             }, 500);
@@ -108,10 +108,10 @@ var emailjs = {
 // DOM Content Loaded
 document.addEventListener('DOMContentLoaded', function() {
     initializeNavigation();
-    
+
     // Initialize page-specific functionality
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-    
+
     switch(currentPage) {
         case 'index.html':
         case '':
@@ -130,13 +130,13 @@ document.addEventListener('DOMContentLoaded', function() {
 function initializeNavigation() {
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
-    
+
     if (hamburger && navMenu) {
         hamburger.addEventListener('click', function() {
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
         });
-        
+
         // Close menu when clicking on a link
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', () => {
@@ -166,7 +166,7 @@ function initializeHomePage() {
 // Submit page initialization
 function initializeSubmitPage() {
     const form = document.getElementById('submissionForm');
-    
+
     if (form) {
         form.addEventListener('submit', handleFormSubmission);
     }
@@ -175,33 +175,33 @@ function initializeSubmitPage() {
 // Form submission handler with EmailJS
 function handleFormSubmission(event) {
     event.preventDefault();
-    
+
     const form = event.target;
     const submitBtn = form.querySelector('.submit-btn');
     const successMessage = document.getElementById('successMessage');
     const errorMessage = document.getElementById('errorMessage');
-    
+
     // Hide previous messages
     successMessage.style.display = 'none';
     errorMessage.style.display = 'none';
-    
+
     // Show loading state
     const originalText = submitBtn.textContent;
     submitBtn.innerHTML = '<span class="loading"></span> Submitting...';
     submitBtn.disabled = true;
-    
+
     // Validate required fields
     const class12gpa = form.querySelector('#class12gpa').value;
     const universityName = form.querySelector('#universityName').value;
     const i20Upload = form.querySelector('#i20Upload').files[0];
     const consent = form.querySelector('#consent').checked;
-    
+
     if (!class12gpa || !universityName || !i20Upload || !consent) {
         showError('Please fill in all required fields.');
         resetSubmitButton(submitBtn, originalText);
         return;
     }
-    
+
     // Send email using EmailJS
     emailjs.sendForm('service_0nzygde', 'template_k4enxm2', form)
         .then(function(response) {
@@ -220,10 +220,10 @@ function handleFormSubmission(event) {
 function showSuccess() {
     const successMessage = document.getElementById('successMessage');
     const form = document.getElementById('submissionForm');
-    
+
     successMessage.style.display = 'block';
     form.style.display = 'none';
-    
+
     // Scroll to success message
     successMessage.scrollIntoView({ behavior: 'smooth' });
 }
@@ -232,7 +232,7 @@ function showError(message) {
     const errorMessage = document.getElementById('errorMessage');
     errorMessage.querySelector('p').textContent = message;
     errorMessage.style.display = 'block';
-    
+
     // Scroll to error message
     errorMessage.scrollIntoView({ behavior: 'smooth' });
 }
@@ -245,7 +245,7 @@ function resetSubmitButton(button, originalText) {
 // Explore page initialization
 function initializeExplorePage() {
     const findButton = document.getElementById('findUniversities');
-    
+
     if (findButton) {
         findButton.addEventListener('click', findMatchingUniversities);
     }
@@ -259,29 +259,29 @@ function findMatchingUniversities() {
     const searchSAT = parseInt(document.getElementById('searchSAT').value) || 0;
     const searchEnglishType = document.getElementById('searchEnglishType').value;
     const searchEnglishScore = parseFloat(document.getElementById('searchEnglishScore').value) || 0;
-    
+
     // Filter universities based on criteria
     const matchingUniversities = sampleUniversities.filter(university => {
         // University requirements should be <= user's scores
         let matches = true;
-        
+
         if (searchClass12 > 0 && university.class12gpa > searchClass12) {
             matches = false;
         }
-        
+
         if (searchSAT > 0 && university.satScore > searchSAT) {
             matches = false;
         }
-        
+
         if (searchEnglishType && searchEnglishScore > 0) {
             if (university.englishTest === searchEnglishType && university.englishScore > searchEnglishScore) {
                 matches = false;
             }
         }
-        
+
         return matches;
     });
-    
+
     displayResults(matchingUniversities);
 }
 
@@ -291,20 +291,20 @@ function displayResults(universities) {
     const resultsGrid = document.getElementById('resultsGrid');
     const resultsCount = document.getElementById('resultsCount');
     const noResults = document.getElementById('noResults');
-    
+
     resultsSection.style.display = 'block';
-    
+
     if (universities.length === 0) {
         resultsGrid.style.display = 'none';
         noResults.style.display = 'block';
         resultsCount.textContent = 'No results found';
         return;
     }
-    
+
     resultsGrid.style.display = 'grid';
     noResults.style.display = 'none';
     resultsCount.textContent = `Found ${universities.length} matching ${universities.length === 1 ? 'university' : 'universities'}`;
-    
+
     resultsGrid.innerHTML = universities.map(university => `
         <div class="university-card">
             <h4>${university.universityName}</h4>
@@ -317,14 +317,14 @@ function displayResults(universities) {
             <div class="i20-preview">
                 <strong>I-20 Document:</strong>
                 <br>
-                <img src="${university.i20Image}" alt="I-20 Document" loading="lazy">
+                <img src="${university.i20Image}" alt="I-20 Document" loading="lazy" onclick="showImage('${university.i20Image}')">
             </div>
             <div class="submission-date">
                 Submitted: ${new Date(university.submissionDate).toLocaleDateString()}
             </div>
         </div>
     `).join('');
-    
+
     // Scroll to results
     resultsSection.scrollIntoView({ behavior: 'smooth' });
 }
@@ -343,7 +343,7 @@ function validateSAT(value) {
 function validateEnglishScore(testType, score) {
     const numScore = parseFloat(score);
     if (isNaN(numScore)) return false;
-    
+
     switch(testType) {
         case 'IELTS':
             return numScore >= 0 && numScore <= 9;
@@ -372,7 +372,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-    
+
     // Add validation to SAT fields
     document.querySelectorAll('input[id*="SAT"], input[id*="sat"]').forEach(input => {
         input.addEventListener('blur', function() {
@@ -390,7 +390,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function showTooltip(element, message) {
     // Remove existing tooltip
     hideTooltip(element);
-    
+
     const tooltip = document.createElement('div');
     tooltip.className = 'validation-tooltip';
     tooltip.textContent = message;
@@ -405,7 +405,7 @@ function showTooltip(element, message) {
         margin-top: 5px;
         white-space: nowrap;
     `;
-    
+
     element.parentNode.style.position = 'relative';
     element.parentNode.appendChild(tooltip);
 }
@@ -423,7 +423,7 @@ function addScrollAnimations() {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
     };
-    
+
     const observer = new IntersectionObserver(function(entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -432,7 +432,7 @@ function addScrollAnimations() {
             }
         });
     }, observerOptions);
-    
+
     // Observe elements for animation
     document.querySelectorAll('.step-card, .usage-card, .benefit-card, .university-card').forEach(el => {
         el.style.opacity = '0';
@@ -448,12 +448,11 @@ document.addEventListener('DOMContentLoaded', addScrollAnimations);
 function showImage(src) {
     const modal = document.getElementById("imageModal");
     const modalImg = document.getElementById("modalImage");
-  
+
     modal.style.display = "block";
     modalImg.src = src;
-  }
-  
-  function closeModal() {
+}
+
+function closeModal() {
     document.getElementById("imageModal").style.display = "none";
-  }
-  
+}
