@@ -1,5 +1,10 @@
+const selectedState = document.getElementById('stateFilter').value.trim().toLowerCase();
+const matchesState = selectedState === '' || university.state.toLowerCase() === selectedState;
+
+
 // Sample university data for demonstration
 const sampleUniversities = [
+
     {
         id: 1,
         universityName: "Arizona State University",
