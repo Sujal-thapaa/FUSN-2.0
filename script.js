@@ -1,85 +1,203 @@
+
 // Sample university data for demonstration
 const sampleUniversities = [
     {
         id: 1,
-        universityName: "Arizona State University",
-        class10gpa: 3.5,
-        class11gpa: 3.6,
-        class12gpa: 3.7,
-        satScore: 1200,
+        universityName: "Texas A&M Texarkana",
+        state: "Texas",
+        class10gpa: 3.35,
+        class11gpa: 2.6,
+        class12gpa: 3.21,
+        satScore: null,
+        englishTest: "Duolingo",
+        englishScore: 105,
+        coa: 22055,
+        //Scholarship: $14000,
+        //Tution_after_scholarship: $6970,
+        i20Image: "/images/i-20-1.png",
+        submissionDate: "2025-05-16",
+        //Text:"Accepted with in 15days after sending transcript from .edu email Get i20 within 5 days"
+
+      },
+      {
+        id: 2,
+        universityName: "South Dakota state University",
+        state: "South Dakota",
+        class10gpa: 3.30,
+        class11gpa: 2.65,
+        class12gpa: 2.91,
+        satScore: null,
         englishTest: "IELTS",
         englishScore: 6.5,
-        coa: 35000,
-        i20Image: "i20_1.png",
-        submissionDate: "2024-01-15"
-    },
-    {
-        id: 2,
-        universityName: "University of Central Florida",
-        class10gpa: 3.4,
-        class11gpa: 3.5,
-        class12gpa: 3.6,
-        satScore: 1250,
-        englishTest: "TOEFL",
-        englishScore: 85,
-        coa: 38000,
-        i20Image: "/placeholder.svg?height=200&width=300",
-        submissionDate: "2024-01-20"
-    },
-    {
-        id: 3,
-        universityName: "San Jose State University",
-        class10gpa: 3.6,
-        class11gpa: 3.7,
-        class12gpa: 3.8,
-        satScore: 1300,
-        englishTest: "Duolingo",
-        englishScore: 115,
-        coa: 42000,
-        i20Image: "/placeholder.svg?height=200&width=300",
-        submissionDate: "2024-02-01"
-    },
-    {
-        id: 4,
-        universityName: "University of Houston",
-        class10gpa: 3.3,
-        class11gpa: 3.4,
-        class12gpa: 3.5,
-        satScore: 1180,
-        englishTest: "PTE",
-        englishScore: 65,
-        coa: 33000,
-        i20Image: "/placeholder.svg?height=200&width=300",
-        submissionDate: "2024-02-10"
-    },
-    {
-        id: 5,
-        universityName: "Florida International University",
-        class10gpa: 3.2,
-        class11gpa: 3.3,
-        class12gpa: 3.4,
-        satScore: 1150,
-        englishTest: "IELTS",
-        englishScore: 6.0,
-        coa: 31000,
-        i20Image: "/placeholder.svg?height=200&width=300",
-        submissionDate: "2024-02-15"
-    },
-    {
-        id: 6,
-        universityName: "George Mason University",
-        class10gpa: 3.7,
-        class11gpa: 3.8,
-        class12gpa: 3.9,
-        satScore: 1350,
-        englishTest: "TOEFL",
-        englishScore: 95,
-        coa: 45000,
-        i20Image: "/placeholder.svg?height=200&width=300",
-        submissionDate: "2024-02-20"
-    }
-];
+        coa: 24322,
+        i20Image: "/images/i-20-2.png",
+        submissionDate: "2025-05-15"
+  
+      },
 
+      {
+        id: 3,
+        universityName: "Neumann University ",
+        state: "Pennsylvania",
+        class10gpa: 3.8,
+        class11gpa: null,
+        class12gpa: 3.38,
+        satScore: 1360,
+        englishTest: "IELTS",
+        englishScore: 7.5,
+        coa: 0,
+        i20Image: "/images/i-20-3.png",
+        submissionDate: "2025-05-15"
+        //Text:"Enrollment fee - 300$ I20 after 1 month Application fee- ×× Friend I20"
+
+ 
+
+      },
+      {
+        id: 4,
+        universityName: "Dakota state university ",
+        state: " South Dakota",
+        class10gpa: 3.05,
+        class11gpa: 3.37,
+        class12gpa: 3.45,
+        satScore: null,
+        englishTest: "Dulingo",
+        englishScore: 110,
+        coa: 26000,
+        i20Image: "/images/i-20-4.png",
+        submissionDate: "2025-05-09"
+        //Text:"i20sent:may6 and received today .Paid application fee $20"
+        
+      },
+      {
+        id: 5,
+        universityName: "Texas A&M University - Texarkana ",
+        state: "Texas",
+        class10gpa: 3.30,
+        class11gpa: 3.81,
+        class12gpa: 3.62,
+        satScore: null,
+        englishTest: "IELTS",
+        englishScore: 7.0,
+        coa: 22055,
+        i20Image: "/images/i-20-5.png",
+        submissionDate: "2024-03-18"
+        //Text:"VISA STATUS: APPROVED"
+      },
+
+     
+      {
+        id: 6,
+        universityName: "Georgia State University",
+        state: "Georgia",
+        class10gpa: null,
+        class11gpa: null,
+        class12gpa: null,
+        satScore: null,
+        englishTest: "English Proficiency",
+        englishScore: null,
+        coa: 28560,
+        i20Image: "/images/i-20-6.png",
+        submissionDate: "2025-05-05"
+      },
+      {
+        id: 7,
+        universityName: "Louisiana Tech University ",
+        state: "Louisiana",
+        class10gpa: 2.45,
+        class11gpa: 2.9,
+        class12gpa: 3.2,
+        satScore: null,
+        englishTest: "English Proficiency",
+        englishScore: null,
+        coa: 21423,
+        i20Image: "/images/i-20-7.png",
+        submissionDate: "2025-04-26"
+        //Text:"Got i20 on 1 month"
+
+      },
+      {
+        id: 8,
+        universityName: "Washington University of Science and Technology",
+        state: "Virginia",
+        class10gpa: 2.95,
+        class11gpa: null,
+        class12gpa: 2.76,
+        satScore: null,
+        englishTest: "IELTS",
+        englishScore: 6,
+        coa: 22310,
+        i20Image: "/images/i-20-8.png",
+        submissionDate: "2025-04-25"
+        //Text: "No Application fee, Got i20 within 1 month"
+      },
+   
+      {
+        id: 9,
+        universityName: "Avila University",
+        state: "Missouri",
+        class10gpa: 2.95,
+        class11gpa: null,
+        class12gpa: 2.76,
+        satScore: null,
+        englishTest: "IELTS",
+        englishScore: 6,
+        coa: 25706,
+        i20Image: "/images/i-20-9.png",
+        submissionDate: "2025-04-05"
+      },
+      {
+        id: 10,
+        universityName: "Louisiana Tech University",
+        state: "Louisiana",
+        class10gpa: 3.55,
+        class11gpa: 3.29,
+        class12gpa: 3.29,
+        satScore: null,
+        englishTest: "IELTS",
+        englishScore: 7.0,
+        coa: 21423,
+        i20Image: "/images/i-20-10.png",
+        submissionDate: "2025-04-22"
+        //Text:"Application sent-march 20, I20 received-april 22(they actually sent me my i20 in april ,17 they said but malai ako thena ani they resent it in april 22) ,University -louisiana tech university ,Letsss gooo, Application fee:waived"
+      },
+      {
+        id: 11,
+        universityName: "St. Cloud State University",
+        state: "Minnesota",
+        class10gpa: null,
+        class11gpa: null,
+        class12gpa: 3.70,
+        satScore: null,
+        englishTest: "PTE",
+        englishScore: 61,
+        coa: 26569,
+        i20Image: "/images/i-20-11.png",
+        submissionDate: "2025-04-22"
+        //Text:"Scholarship same for everyone .No need of application fee .,Major:Computer and information system ."
+      },
+
+      {
+        id: 12,
+        universityName: "University of Louisiana at Monroe",
+        state: "Louisiana",
+        class10gpa: 3.85,
+        class11gpa: 3.71,
+        class12gpa: 3.82,
+        satScore: 1320,
+        englishTest: "IELTS",
+        englishScore: 7,
+        coa: 14678,
+        i20Image: "/images/i-20-11.png",
+        submissionDate: "2025-04-22"
+        //Text:"application fee: 30$ _____paid 10$ ,use SENIOR2025 TO GET 20$ DISCOUNT."
+      }
+   
+
+    
+    
+  ];
+  
 // Initialize EmailJS
 var emailjs = {
     init: function(userId) {
@@ -259,31 +377,28 @@ function findMatchingUniversities() {
     const searchSAT = parseInt(document.getElementById('searchSAT').value) || 0;
     const searchEnglishType = document.getElementById('searchEnglishType').value;
     const searchEnglishScore = parseFloat(document.getElementById('searchEnglishScore').value) || 0;
+    const selectedState = document.getElementById('stateFilter').value.trim().toLowerCase();
 
-    // Filter universities based on criteria
     const matchingUniversities = sampleUniversities.filter(university => {
-        // University requirements should be <= user's scores
-        let matches = true;
+        // ✅ Fix is here: matchesState must be checked *inside* filter
+        const matchesState = selectedState === '' || university.state.toLowerCase() === selectedState;
 
-        if (searchClass12 > 0 && university.class12gpa > searchClass12) {
-            matches = false;
-        }
-
-        if (searchSAT > 0 && university.satScore > searchSAT) {
-            matches = false;
-        }
+        if (!matchesState) return false;
+        if (searchClass12 > 0 && university.class12gpa > searchClass12) return false;
+        if (searchSAT > 0 && (university.satScore === null || university.satScore > searchSAT)) return false;
 
         if (searchEnglishType && searchEnglishScore > 0) {
             if (university.englishTest === searchEnglishType && university.englishScore > searchEnglishScore) {
-                matches = false;
+                return false;
             }
         }
 
-        return matches;
+        return true;
     });
 
     displayResults(matchingUniversities);
 }
+
 
 // Display search results
 function displayResults(universities) {
@@ -456,3 +571,4 @@ function showImage(src) {
 function closeModal() {
     document.getElementById("imageModal").style.display = "none";
 }
+

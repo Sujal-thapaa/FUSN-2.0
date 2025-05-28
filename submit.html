@@ -5,7 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Submit Your Profile - FUSN</title>
   <link rel="stylesheet" href="styles.css" />
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 </head>
+
 <body>
   <header>
     <nav class="navbar">
@@ -31,13 +35,7 @@
 
         <form action="https://formsubmit.co/fusn.usa@gmail.com" method="POST" enctype="multipart/form-data" target="_self">
 
-
           <div class="form-grid">
-            <div class="form-group full-width">
-              <label for="userEmail">Your Email <span class="required">*</span></label>
-              <input type="email" name="userEmail" id="userEmail" placeholder="you@example.com" required />
-            </div>
-
             <div class="form-group">
               <label for="class10gpa">Class 10 GPA</label>
               <input type="number" name="class10gpa" step="0.01" min="0" max="4" placeholder="e.g., 3.8" />
@@ -73,26 +71,47 @@
               <label for="englishScore">English Test Score</label>
               <input type="number" name="englishScore" step="0.1" placeholder="Your score" />
             </div>
-          </div>
 
-          <div class="form-group full-width">
-            <label for="universityName">University Name <span class="required">*</span></label>
-            <input type="text" name="universityName" required />
-          </div>
+            <div class="form-group full-width">
+              <label for="universityState">University State <span class="required">*</span></label>
+              <select name="universityState" id="universityState" required>
+                <option value="">Select a state</option>
+                <!-- Add states dynamically or keep static options -->
+                <option value="California">California</option>
+                <option value="Texas">Texas</option>
+                <option value="Florida">Florida</option>
+                <option value="New York">New York</option>
+                <option value="Massachusetts">Massachusetts</option>
+                <option value="...">...</option>
+              </select>
+            </div>
 
-          <div class="form-group full-width">
-            <label for="universityCOA">University COA (USD)</label>
-            <input type="number" name="universityCOA" min="0" placeholder="e.g., 45000" />
-          </div>
+            <div class="form-group full-width">
+              <label for="universityName">University Name <span class="required">*</span></label>
+              <select name="universityName" id="universityName" required>
+                <option value="">Search or select your university</option>
+              </select>
+            </div>
 
-          <div class="form-group full-width">
-            <label for="i20Upload">Upload I-20 Document <span class="required">*</span></label>
-            <input type="file" name="i20Upload" accept="image/*,.pdf" required />
-          </div>
+            <div class="form-group full-width">
+              <label for="universityCOA">University COA (USD)</label>
+              <input type="number" name="universityCOA" min="0" placeholder="e.g., 45000" />
+            </div>
 
-          <div class="form-group full-width">
-            <input type="checkbox" name="consent" id="consent" required />
-            <label for="consent">I confirm all personal info is redacted and I agree to share my data. <span class="required">*</span></label>
+            <div class="form-group full-width">
+              <label for="i20Upload">Upload I-20 Document <span class="required">*</span></label>
+              <input type="file" name="i20Upload" accept="image/*,.pdf" required />
+            </div>
+
+            <div class="form-group full-width">
+              <label for="additionalInfo">Additional Information</label>
+              <textarea name="additionalInfo" id="additionalInfo" rows="4" placeholder="Provide any additional details about your offer or profile"></textarea>
+            </div>
+
+            <div class="form-group full-width">
+              <label for="consent">I confirm all personal info is redacted and I agree to share my data. <span class="required">*</span></label>
+              <input type="checkbox" name="consent" id="consent" required />
+            </div>
           </div>
 
           <!-- Hidden for Formsubmit -->
@@ -100,8 +119,7 @@
           <input type="hidden" name="_subject" value="New University Submission">
           <input type="hidden" name="_wpcc" value="ACCEPT">
           <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_next" value="https://sujal-thapaa.github.io/FUSN-2.0/thankyou.html">
-
+          <input type="hidden" name="_next" value="thankyou.html">
 
           <button type="submit" class="btn btn-primary submit-btn">Submit Profile</button>
         </form>
@@ -114,5 +132,22 @@
       <p>&copy; 2024 FUSN - Foreign University Student Network. Helping Nepali students achieve their dreams.</p>
     </div>
   </footer>
+
+  <script>
+    $(document).ready(function () {
+      $('#universityName').select2({ placeholder: 'Search or select your university' });
+      fetch('uni.json')
+        .then(response => response.json())
+        .then(data => {
+          const select = $('#universityName');
+          data.forEach(item => {
+            select.append(new Option(item.institution, item.institution));
+          });
+        })
+        .catch(error => {
+          console.error('Failed to load university list:', error);
+        });
+    });
+  </script>
 </body>
 </html>
